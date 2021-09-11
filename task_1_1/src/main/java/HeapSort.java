@@ -7,7 +7,7 @@ public class HeapSort {
     public void sort(int[] array) {
         int N = array.length;
         for (int i = N / 2 - 1; i >= 0; i--)
-            heapify(array, N, i--);
+            heapify(array, N, i);
 
         for (int i = N - 1; i >= 0; i--) {
             int temp = array[0];
@@ -18,7 +18,7 @@ public class HeapSort {
         }
     }
 
-   private void heapify(int[] array, int N, int i) {
+    private void heapify(int[] array, int N, int i) {
         int root = i;//root
         int l = 2 * i + 1;//left son
         int r = 2 * i + 2;//right son
