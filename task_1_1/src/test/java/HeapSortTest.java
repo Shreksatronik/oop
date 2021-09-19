@@ -11,7 +11,7 @@ public class HeapSortTest {
         Assertions.assertArrayEquals(ans,arr);
     }
     @Test
-    public void test2(){
+    public void maxElemTest(){
         HeapSort sort = new HeapSort();
         int []ans = {1,2,3,4,2147483647};
         int []arr = {3,1,4,2,2147483647};
@@ -19,7 +19,7 @@ public class HeapSortTest {
         Assertions.assertArrayEquals(ans,arr);
     }
     @Test
-    public void test3(){
+    public void minElemTest(){
         HeapSort sort = new HeapSort();
         int []ans = {-2147483647,1,2,3,4};
         int []arr = {3,1,4,2,-2147483647};
@@ -27,7 +27,7 @@ public class HeapSortTest {
         Assertions.assertArrayEquals(ans,arr);
     }
     @Test
-    public void test4(){
+    public void oneElemTest(){
         HeapSort sort = new HeapSort();
         int []ans = {1};
         int []arr = {1};
@@ -35,7 +35,7 @@ public class HeapSortTest {
         Assertions.assertArrayEquals(ans,arr);
     }
     @Test
-    public void test5(){
+    public void emptyArrayTest(){
         HeapSort sort = new HeapSort();
         int []ans = {};
         int []arr = {};

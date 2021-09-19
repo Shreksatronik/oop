@@ -1,8 +1,7 @@
 public class HeapSort {
     /**
-     * Если переменные и константы хранят некоторые значения,
-     * то методы содержат собой набор операторов,
-     * которые выполняют определенные действия.
+     * sort - Формируем кучу. Один за другим извлекаем элементы из кучи.
+     * @param array - массив данных
      */
     public void sort(int[] array) {
         int N = array.length;
@@ -18,6 +17,12 @@ public class HeapSort {
         }
     }
 
+    /**
+     * heapify-Рекурсивно преобразуем в двоичную кучу затронутое поддерево
+     * @param array-массив данных
+     * @param N-количество элементов массива
+     * @param i-индекс
+     */
     private void heapify(int[] array, int N, int i) {
         int root = i;//root
         int l = 2 * i + 1;//left son
