@@ -1,8 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+import java.util.Arrays;
 import java.io.IOException;
-
+import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SubstringSearchTest {
@@ -14,7 +14,7 @@ class SubstringSearchTest {
 
     }
 
-    @Test
+   @Test
     public void no_file() throws IOException {
         SubstringSearch KMP = new SubstringSearch();
         Throwable thrown = assertThrows(IOException.class, () -> {
@@ -27,22 +27,16 @@ class SubstringSearchTest {
     public void null_string() throws IOException {
         SubstringSearch KMP = new SubstringSearch();
         Integer[] ans = KMP.KMP("test1.txt", "");
-        assert (ans==null);
+        Integer[] arr = {};
+        assertArrayEquals(ans,arr);
 
     }
     @Test
     public void errorString() throws IOException {
         SubstringSearch KMP = new SubstringSearch();
-        Integer[] a =KMP.KMP("test1.txt", "baklagan");
-        assert(a==null);
+        Integer[] ans =KMP.KMP("test1.txt", "baklagan");
+        Integer[] arr = {};
+        assertArrayEquals(ans,arr);
     }
-
-    @Test
-    public void bigString() throws IOException {
-        SubstringSearch KMP = new SubstringSearch();
-        Integer[] a = KMP.KMP("test1.txt", "ya hochu pirogi ya ih ochen lublu");
-        assert (a == null);
-    }
-
 
 }

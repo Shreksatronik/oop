@@ -32,35 +32,41 @@ public class SubstringSearch {
      * @throws IOException - общий класс исключений
      */
         public static Integer[] KMP(String haystack, String needle) throws IOException {
+            Integer[] array = {};
 
             int n = haystack.length();
             int m = needle.length();
-            if(m==0)
-             return null;
+            if (m == 0)
+                return array;
             int[] prefixF = searchSubstring(needle);
             ArrayList<Integer> found = new ArrayList<>();
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(haystack));
+            BufferedReader bufferedReader = null;
+            try {
+                bufferedReader = new BufferedReader(new FileReader(haystack));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             int sum = bufferedReader.read();
             int j = 0;
-            for (int i = 0;sum != -1;i++) {
+            for (int i = 0; sum != -1; i++) {
                 char c = (char) sum;
                 sum = bufferedReader.read();
-                    if (needle.charAt(j) == c) {
-                        j++;
-                    }
-                    if (j == m) {
-                        found.add(i - j + 1);
+                if (needle.charAt(j) == c) {
+                    j++;
+                }
+                if (j == m) {
+                    found.add(i - j + 1);
+                    j = prefixF[j - 1];
+                } else if (i < n && needle.charAt(j) != c) {
+                    if (j != 0) {
                         j = prefixF[j - 1];
-                    } else if (i < n && needle.charAt(j) != c) {
-                        if (j != 0) {
-                            j = prefixF[j - 1];
-                        }
                     }
                 }
+            }
 
-            Integer[] arr={-1};
-            arr=(found.toArray(arr));
-            return arr[0]==null?null:arr;
+            Integer[] arr = {};
+            arr = (found.toArray(arr));
+            return arr;
         }
     }
 
