@@ -5,6 +5,20 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class SubstringSearch {
+    public class NoString extends Exception
+    {
+        public NoString(String needle, String message)
+        {
+            super(needle + message);
+        }
+    }
+    public class NoFile extends Exception
+    {
+        public NoFile(String haystack, String messsage)
+        {
+            super(haystack + messsage);
+        }
+    }
     /**
      * searchSubstring - создает префикс функцию
      * @param needle - строка индекс вхождения в текст которой мы ищем
@@ -31,22 +45,24 @@ public class SubstringSearch {
      * @return - оператор возврата
      * @throws IOException - общий класс исключений
      */
-        public static Integer[] KMP(String haystack, String needle) throws IOException {
-            Integer[] array = {};
+        public Integer[] KMP(String haystack, String needle) throws IOException, NoString {
 
             int n = haystack.length();
             int m = needle.length();
-            if (m == 0)
-                return array;
-            int[] prefixF = searchSubstring(needle);
-            ArrayList<Integer> found = new ArrayList<>();
+
             BufferedReader bufferedReader = null;
             try {
                 bufferedReader = new BufferedReader(new FileReader(haystack));
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                throw new IllegalArgumentException("No file");
             }
+            if (m==0){
+                NoString e = new NoString(needle, "The substring is empty");
+                throw e;
+            }
+            int[] prefixF = searchSubstring(needle);
             int sum = bufferedReader.read();
+            ArrayList<Integer> found = new ArrayList<>();
             int j = 0;
             for (int i = 0; sum != -1; i++) {
                 char c = (char) sum;
