@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *Класс, реализующий работу стека.
+ * Stack - Класс, реализующий работу стека.
  *
  * @param <T> тип элементов.
  */
@@ -58,25 +58,43 @@ public class Stack<T> {
     }
 
     /**
-     *Реализация итератора для стека.
      *
-     * @return следующий элемент стека.
+     * @param arr - стек который мы хотим добавить
      */
-    public Iterator<T> iterator() {
-        return new Iterator<T>() {
-            private int position = 0;
-
-            public boolean hasNext() {
-                return !(position == size);
-            }
-
-            public T next() throws NoSuchElementException {
-                return stackArray[position++];
-            }
-        };
+    public void pushStack(Stack arr) throws Exception {
+        int n = arr.count();
+        if (size + n >= stackArray.length) {
+            stackArray = Arrays.copyOf(stackArray, capacity = 2 * capacity + n);
+        }
+        T[] buf=(T[]) new Object[n];
+        for(int i=0;i<n;i++){
+            buf[i]=(T) arr.pop();
+        }
+        for (int i = 0; i < n; i++) {
+            this.push(buf[n-i-1]);
+        }
     }
 
-
+    /**
+     *
+     * @param n - размер стека который мы хотим удалить
+     * @return - возвращает стек
+     */
+    public Stack popStack(int n) throws Exception {
+        if (size < 0) {
+            Exception e;
+            throw e = new IndexOutOfBoundsException("Stack is empty");
+        }
+        if(size-n<0){
+            Exception e;
+            throw e = new IndexOutOfBoundsException("Not enough elements in stack");
+        }
+        int a = size - n;
+        Stack<T> sstack = new Stack();
+        for(int i=0;i<n;i++)
+        {sstack.push(this.stackArray[a+i+1]);this.pop();}
+        return sstack;
+    }
     /**
      * Проверяет, пуст ли стек.
      *

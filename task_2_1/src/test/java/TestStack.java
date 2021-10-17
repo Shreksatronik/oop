@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.Iterator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class TestStack {
 
 
@@ -51,7 +54,13 @@ public class TestStack {
         }
         Assert.assertEquals(arr.size(), stack.count());
     }
-
+    @Test
+    void pop_stack_test() throws Exception{
+        Stack<Integer> s=new Stack();
+        s.push(1);
+        Exception e = assertThrows(Exception.class, () -> {Stack a =  s.popStack(3);});
+        assertEquals(e.getMessage(),"Not enough elements in stack");
+    }
 
     @Test
     public void test_with_strings() {
@@ -85,25 +94,7 @@ public class TestStack {
     }
 
 
-    @Test
-    public void iterator_test() {
 
-        for (int i = 0; i < 300; ++i) {
-            Stack<Integer> stack = new Stack<Integer>();
-            ArrayList<Integer> arr = new ArrayList<Integer>();
-            stack.push(i);
-            arr.add(i);
-            Iterator<Integer> iter = stack.iterator();
-            Iterator<Integer> iter2 = arr.iterator();
-
-            for (int k : arr){
-                Assert.assertEquals(iter.next(), iter2.next());
-            }
-            while (iter.hasNext()) {
-                Assert.assertEquals(iter.next(), iter2.next());
-            }
-        }
-    }
 
     private static class Assert {
         public static void assertEquals(int elementArr, int elementStack) {
