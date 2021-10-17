@@ -13,7 +13,6 @@ public class Stack<T> {
 
     private static final int DEFAULT_CAPACITY = 10;
     private T[] stackArray;
-    // private int position = 0;
     private int size = 0;
     private int capacity;
 
