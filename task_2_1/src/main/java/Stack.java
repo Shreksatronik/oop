@@ -22,10 +22,6 @@ public class Stack<T> {
         stackArray = (T[]) new Object[DEFAULT_CAPACITY];
     }
 
-    public Stack(int capacity) {
-        this.capacity = capacity;
-        stackArray = (T[]) new Object[capacity];
-    }
 
     /**
      * Метод, который помещает элемент в стек.
