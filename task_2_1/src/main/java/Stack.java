@@ -47,10 +47,9 @@ public class Stack<T> {
             throw new IndexOutOfBoundsException();
         } else {
             T element = stackArray[--size];
-            stackArray[size] = null;
 
             int reducedSize = size;
-            if (size >= capacity && size < (reducedSize + (reducedSize << 1))) {
+            if (size >= stackArray.length && size < (reducedSize + (reducedSize << 1))) {
                 System.arraycopy(stackArray, 0, stackArray, 0, size);
             }
             return element;
@@ -63,8 +62,8 @@ public class Stack<T> {
      */
     public void pushStack(Stack arr) throws Exception {
         int n = arr.count();
-        if (size + n >= stackArray.length) {
-            stackArray = Arrays.copyOf(stackArray, capacity = 2 * capacity + n);
+        if (n == stackArray.length) {
+            stackArray = Arrays.copyOf(stackArray, 2 * stackArray.length);
         }
         T[] buf=(T[]) new Object[n];
         for(int i=0;i<n;i++){
@@ -91,18 +90,13 @@ public class Stack<T> {
         }
         int a = size - n;
         Stack<T> sstack = new Stack();
-        for(int i=0;i<n;i++)
-        {sstack.push(this.stackArray[a+i+1]);this.pop();}
+        for(int i = 0; i<n;i++) {
+            sstack.push(this.stackArray[a+i+1]);
+            this.pop();
+        }
         return sstack;
     }
-    /**
-     * Проверяет, пуст ли стек.
-     *
-     * @return 1 - если стек пуст, иначе возвращает 0.
-     */
-    public boolean isEmpty() {
-        return size == 0;
-    }
+
 
     /**
      * Метод, который получает количество элементов в стеке.
