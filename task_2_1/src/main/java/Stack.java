@@ -42,9 +42,10 @@ public class Stack<T> {
      * @return элемент стека, если он существует, в противном случае выдает исключение.
      * @throws IndexOutOfBoundsException выдает это исключение, если стек пуст.
      */
-    public T pop() throws IndexOutOfBoundsException {
+    public T pop() throws Exception {
         if (size <= 0) {
-            throw new IndexOutOfBoundsException();
+            Exception e;
+            throw e = new IndexOutOfBoundsException("Stack is empty");
         } else {
             T element = stackArray[--size];
 
@@ -86,7 +87,7 @@ public class Stack<T> {
         }
         if(size-n<0){
             Exception e;
-            throw e = new IndexOutOfBoundsException("Not enough elements in stack");
+            throw e = new IndexOutOfBoundsException("Stack is empty");
         }
         int a = size - n;
         Stack<T> sstack = new Stack();
