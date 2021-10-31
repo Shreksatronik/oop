@@ -14,8 +14,6 @@ public class Stack<T> {
 
     private T[] stackArray;
     private int size = 0;
-    private int capacity;
-
 
     public Stack() {
         stackArray = (T[]) new Object[10];
