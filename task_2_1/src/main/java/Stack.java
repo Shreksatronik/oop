@@ -11,15 +11,14 @@ import java.util.NoSuchElementException;
 
 public class Stack<T> {
 
-    private static final int DEFAULT_CAPACITY = 10;
+
     private T[] stackArray;
     private int size = 0;
     private int capacity;
 
 
     public Stack() {
-        this.capacity = DEFAULT_CAPACITY;
-        stackArray = (T[]) new Object[DEFAULT_CAPACITY];
+        stackArray = (T[]) new Object[10];
     }
 
 
