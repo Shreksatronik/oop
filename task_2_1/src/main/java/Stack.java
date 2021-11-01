@@ -27,9 +27,8 @@ public class Stack<T> {
      */
     public void push(T element) {
         if (this.size >= stackArray.length) {
-            int newSize = size + (size >> 1);
-            stackArray = Arrays.copyOf(stackArray, newSize);
-        }
+                stackArray = Arrays.copyOf(stackArray, 2 * stackArray.length);
+            }
         stackArray[size++] = element;
     }
 
@@ -45,11 +44,6 @@ public class Stack<T> {
             throw e = new IndexOutOfBoundsException("Stack is empty");
         } else {
             T element = stackArray[--size];
-
-            int reducedSize = size;
-            if (size >= stackArray.length && size < (reducedSize + (reducedSize << 1))) {
-                System.arraycopy(stackArray, 0, stackArray, 0, size);
-            }
             return element;
         }
     }
@@ -86,10 +80,9 @@ public class Stack<T> {
             Exception e;
             throw e = new IndexOutOfBoundsException("Stack is empty");
         }
-        int a = size - n;
         Stack<T> sstack = new Stack();
         for(int i = 0; i<n;i++) {
-            sstack.push(this.stackArray[a+i+1]);
+            sstack.push(this.stackArray[size - n + i + 1]);
             this.pop();
         }
         return sstack;
