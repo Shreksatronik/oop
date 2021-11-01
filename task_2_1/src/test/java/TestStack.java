@@ -22,7 +22,7 @@ public class TestStack {
         Exception e = assertThrows(Exception.class, () -> {
             Stack a =  s.popStack(3);
         });
-        assertEquals(e.getMessage(),"Not enough elements in stack");
+        assertEquals(e.getMessage(),"Stack is empty");
     }
     @Test
     void working_with_Integer_test() throws Exception {
