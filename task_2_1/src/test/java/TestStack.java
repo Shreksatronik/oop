@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+import org.junit.jupiter.api.Assertions;
+>>>>>>> Stashed changes
 import org.junit.jupiter.api.Test;
 
 
@@ -49,7 +53,12 @@ public class TestStack {
         x=s.pop();
         assert(x=="2");
         x=s.pop();
+<<<<<<< Updated upstream
         assert(x=="1");
+=======
+        assert (x == "1");
+
+>>>>>>> Stashed changes
     }
 
 }
