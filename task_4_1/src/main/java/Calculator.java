@@ -61,7 +61,7 @@ public class Calculator extends Arithmetics {
                 stack.push(pow(x, y));
             } else if (inputString[i].equals("sqrt")) {
                 x = stack.pop();
-                if(x>0)
+                if(x>=0)
                 stack.push(sqrt(x));
             } else if (inputString[i].equals("sin")) {
                 x = stack.pop();
