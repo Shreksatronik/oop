@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gradesTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-14T04:28:28" hostname="USER-PC" time="0.057">
-  <properties/>
-  <testcase name="AverageTest()" classname="gradesTest" time="0.047"/>
-  <testcase name="ScholarshipTest()" classname="gradesTest" time="0.003"/>
-  <testcase name="DiplomaTest()" classname="gradesTest" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
