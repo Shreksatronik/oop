@@ -1,16 +1,11 @@
 import java.util.Scanner;
+
 import java.util.Stack;
 
 import Arithmetic.Arithmetics;
 
 public class Calculator extends Arithmetics {
 
-    public void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        System.out.println(calculator(input));
-        scanner.close();
-    }
 
     private boolean isNumber(String input) {
         if (input == null) {
@@ -23,58 +18,77 @@ public class Calculator extends Arithmetics {
         }
         return true;
     }
+    private double protectedPop(Stack<Double> stack) throws Exception {
+        try {
+            return stack.pop();
+        } catch (Exception e) {
+            throw new Exception("Empty stack");
+        }
+    }
 
 
-    public double calculator(String input) {
+    public double calculator(String input) throws Exception {
         String[] inputString = input.split(" ");
-        Stack <Double> stack = new Stack<>();
+        Stack<Double> stack = new Stack<>();
 
-        for (int i = inputString.length - 1; i > 0 ; --i) {
+        for (int i = inputString.length - 1; i > 0; --i) {
             double x;
             double y;
             if (isNumber(inputString[i])) {
                 stack.push(Double.parseDouble(inputString[i]));
-            } else if (inputString[i].equals("+")) {
-                x = stack.pop();
-                y = stack.pop();
-                stack.push(add(x, y));
-            } else if (inputString[i].equals("-")) {
-                x = stack.pop();
-                y = stack.pop();
-                stack.push(sub(x, y));
-            } else if (inputString[i].equals("*")) {
-                x = stack.pop();
-                y = stack.pop();
-                stack.push(mult(x, y));
-            } else if (inputString[i].equals("/")) {
-                x = stack.pop();
-                y = stack.pop();
-                if(y!=0)
-                stack.push(div(x, y));
-            } else if (inputString[i].equals("log")) {
-                x = stack.pop();
-                if(x>0)
-                stack.push(log(x));
-            } else if (inputString[i].equals("pow")) {
-                x = stack.pop();
-                y = stack.pop();
-                stack.push(pow(x, y));
-            } else if (inputString[i].equals("sqrt")) {
-                x = stack.pop();
-                if(x>=0)
-                stack.push(sqrt(x));
-            } else if (inputString[i].equals("sin")) {
-                x = stack.pop();
-                stack.push(sin(x));
-            } else if (inputString[i].equals("cos")) {
-                x = stack.pop();
-                stack.push(cos(x));
             } else {
-                System.out.println("Invalid syntax");
+                switch (inputString[i]) {
+                    case "+":
+                        x = protectedPop(stack);
+                        y = protectedPop(stack);
+                        stack.push(add(x, y));
+                        break;
+                    case "-":
+                        x = protectedPop(stack);
+                        y = protectedPop(stack);
+                        stack.push(sub(x, y));
+                        break;
+                    case "*":
+                        x = protectedPop(stack);
+                        y = protectedPop(stack);
+                        stack.push(mult(x, y));
+                        break;
+                    case "/":
+                        x = protectedPop(stack);
+                        y = protectedPop(stack);
+                        if (y != 0)
+                            stack.push(div(x, y));
+                        break;
+                    case "log":
+                        x = protectedPop(stack);
+                        if (x > 0)
+                            stack.push(log(x));
+                        break;
+                    case "pow":
+                        x = protectedPop(stack);
+                        y = protectedPop(stack);
+                        stack.push(pow(x, y));
+                        break;
+                    case "sqrt":
+                        x = protectedPop(stack);
+                        if (x >= 0)
+                            stack.push(sqrt(x));
+                        break;
+                    case "sin":
+                        x = protectedPop(stack);
+                        stack.push(sin(x));
+                        break;
+                    case "cos":
+                        x = protectedPop(stack);
+                        stack.push(cos(x));
+                        break;
+                }
             }
+
+
         }
         return stack.pop();
     }
-
 }
+
 

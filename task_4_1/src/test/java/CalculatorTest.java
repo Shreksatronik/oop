@@ -73,7 +73,7 @@ class CalculatorTest extends Arithmetics{
         Assertions.assertEquals(result, div(x, y));
     }
     @Test
-    public void calculator_Test(){
+    public void calculator_Test() throws Exception {
         Calculator calculator = new Calculator();
         String input = "sin + - 1 2 1";
         double result = 0.0;
