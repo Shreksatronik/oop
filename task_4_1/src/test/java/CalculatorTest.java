@@ -38,10 +38,9 @@ class CalculatorTest extends Arithmetics{
 
     @Test
     public void log_Test() {
-        double x = 5.0;
-        double y = 125.0;
-        double result = 3.0;
-        Assertions.assertEquals(result, log(x, y), 0.00001);
+        double x = 1.0;
+        double result = 0.0;
+        Assertions.assertEquals(result, log(x), 0.01);
     }
 
     @Test

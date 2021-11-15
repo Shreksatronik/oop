@@ -49,17 +49,19 @@ public class Calculator extends Arithmetics {
             } else if (inputString[i].equals("/")) {
                 x = stack.pop();
                 y = stack.pop();
+                if(y!=0)
                 stack.push(div(x, y));
             } else if (inputString[i].equals("log")) {
                 x = stack.pop();
-                y = stack.pop();
-                stack.push(log(x, y));
+                if(x>0)
+                stack.push(log(x));
             } else if (inputString[i].equals("pow")) {
                 x = stack.pop();
                 y = stack.pop();
                 stack.push(pow(x, y));
             } else if (inputString[i].equals("sqrt")) {
                 x = stack.pop();
+                if(x>0)
                 stack.push(sqrt(x));
             } else if (inputString[i].equals("sin")) {
                 x = stack.pop();

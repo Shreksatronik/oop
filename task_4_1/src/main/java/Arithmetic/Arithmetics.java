@@ -18,8 +18,8 @@ public class Arithmetics {
             return x / y;
         }
 
-        public double log(double x, double y) {
-            return Math.log(y) / Math.log(x);
+        public double log(double x) {
+            return Math.log(x);
         }
 
         public double pow(double x, double y) {
