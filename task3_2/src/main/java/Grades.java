@@ -57,6 +57,12 @@ public class Grades {
         this.semesters[semester].setGrade(discipline,grade);
     }
 
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
     public Collection<Integer> getSemesterGrades(int sem) {
         return semesters[sem].getGrades();
     }
@@ -80,6 +86,13 @@ public class Grades {
         }
         return grades;
     }
+<<<<<<< Updated upstream
+=======
+    public void ch(String discipline, int mark, int cnt) {
+        semesters[cnt].changeGrade(discipline, mark);
+
+    }
+>>>>>>> Stashed changes
 
     public double averageRating() {
         ArrayList<Integer> marks = getAllGrades();

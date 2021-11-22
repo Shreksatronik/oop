@@ -28,6 +28,22 @@ class gradesTest {
 
         assertFalse(Nastya.RedDiploma());
     }
+<<<<<<< Updated upstream
+=======
+    @Test
+    public void ChangeGrade() {
+        Grades Nastya = new Grades(200776, "A.D. Ordina", "Fit", 4);
+        Nastya.add("OCT", 5, 1);
+        Nastya.add("History", 5, 1);
+        Nastya.add("Imperative programming", 4, 2);
+        Nastya.add("Declarative programming", 4, 2);
+        Nastya.add("Math analysys", 4, 2);
+        Nastya.add("English", 3, 2);
+
+        Nastya.ch("OCT",4,1);
+        System.out.println(Nastya.getSemesterGrades(1));
+    }
+>>>>>>> Stashed changes
 
     @Test
     public void ScholarshipTest() {
