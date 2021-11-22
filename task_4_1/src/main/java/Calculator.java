@@ -6,7 +6,11 @@ import Arithmetic.Arithmetics;
 
 public class Calculator extends Arithmetics {
 
-
+    /**
+     * проверка является ли числом
+     * @param input - строка
+     * @return - true/false
+     */
     private boolean isNumber(String input) {
         if (input == null) {
             return false;
@@ -18,6 +22,13 @@ public class Calculator extends Arithmetics {
         }
         return true;
     }
+
+    /**
+     * pop
+     * @param stack
+     * @return
+     * @throws Exception
+     */
     private double protectedPop(Stack<Double> stack) throws Exception {
         try {
             return stack.pop();
@@ -26,7 +37,12 @@ public class Calculator extends Arithmetics {
         }
     }
 
-
+    /**
+     * калькулятор выполняющий простые арифметические функции
+     * @param input
+     * @return
+     * @throws Exception
+     */
     public double calculator(String input) throws Exception {
         String[] inputString = input.split(" ");
         Stack<Double> stack = new Stack<>();
