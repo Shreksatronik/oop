@@ -9,7 +9,13 @@ public class Grades {
     private final Semester[] semesters = new Semester[9];
     private int qualifyingWorkGrade;
 
-
+    /**
+     * тело зачетной книжки
+     * @param id
+     * @param fullname
+     * @param faculty
+     * @param qualifyingWorkGrade
+     */
     public Grades(int id, String fullname, String faculty, int qualifyingWorkGrade) {
         this.id = id;
         this.fullname = fullname;
@@ -53,21 +59,32 @@ public class Grades {
         return qualifyingWorkGrade;
     }
 
+    /**
+     * добавляет предмет и оценку за него
+     * @param discipline
+     * @param grade
+     * @param semester
+     */
     public void add (String discipline,int grade, int semester) {
         this.semesters[semester].setGrade(discipline,grade);
     }
 
-<<<<<<< Updated upstream
-=======
 
+    /**
+     * выдает все оценки за выбранный семестр
+     * @param sem
+     * @return
+     */
 
-
->>>>>>> Stashed changes
     public Collection<Integer> getSemesterGrades(int sem) {
         return semesters[sem].getGrades();
     }
 
-
+    /**
+     * будет ли повышенная стипендия
+     * @param sem
+     * @return
+     */
     public boolean increasedScholarship(int sem) {
         Collection<Integer> marks = getSemesterGrades(sem);
         boolean result = true;
@@ -79,6 +96,11 @@ public class Grades {
         }
         return result;
     }
+
+    /**
+     * выдает все оценки
+     * @return
+     */
     public ArrayList<Integer> getAllGrades() {
         ArrayList<Integer> grades = new ArrayList<>();
         for (int i = 1; i < 9; i++) {
@@ -86,14 +108,22 @@ public class Grades {
         }
         return grades;
     }
-<<<<<<< Updated upstream
-=======
+
+    /**
+     * меняет оценку
+     * @param discipline
+     * @param mark - новая оценка
+     * @param cnt - номер семестра
+     */
     public void ch(String discipline, int mark, int cnt) {
         semesters[cnt].changeGrade(discipline, mark);
 
     }
->>>>>>> Stashed changes
 
+    /**
+     * средняя оценка
+     * @return
+     */
     public double averageRating() {
         ArrayList<Integer> marks = getAllGrades();
         double result = 0.0;
@@ -107,6 +137,10 @@ public class Grades {
 
     }
 
+    /**
+     * будет ли красный диплом
+     * @return
+     */
     public boolean RedDiploma() {
         List<Integer> Grades = getAllGrades();
         long fives = 0;

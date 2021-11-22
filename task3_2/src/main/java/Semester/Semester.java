@@ -2,22 +2,28 @@ package Semester;
 
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< Updated upstream
-=======
 import java.util.stream.Stream;
->>>>>>> Stashed changes
 
 public class Semester {
 
     private static List<Subject> semester = new ArrayList<>();
+
+    /**
+     * setGrade - добавляет дисциплину и оценку
+     * @param discipline
+     * @param grade
+     */
 
 
     public void setGrade(String discipline,int grade) {
         semester.add(new Subject(discipline, grade));
     }
 
-<<<<<<< Updated upstream
-=======
+    /**
+     * changeGrade - меняет оценку за предмет
+     * @param discipline
+     * @param newgrade - новая оценка
+     */
     public void changeGrade(String discipline, int newgrade) {
         for(int i = 0;i<semester.size();i++){
             if(semester.get(i).getDiscipline().equals(discipline)){
@@ -27,8 +33,10 @@ public class Semester {
         }
     }
 
-
->>>>>>> Stashed changes
+    /**
+     * выдает список оуенок
+     * @return
+     */
     public List<Integer> getGrades() {
        List<Integer> grades = new ArrayList<>();
        for(Subject i:semester){
