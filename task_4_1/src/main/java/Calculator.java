@@ -8,6 +8,7 @@ public class Calculator extends Arithmetics {
 
     /**
      * проверка является ли числом
+     *
      * @param input - строка
      * @return - true/false
      */
@@ -25,20 +26,23 @@ public class Calculator extends Arithmetics {
 
     /**
      * pop
+     *
      * @param stack
      * @return
      * @throws Exception
      */
+
     private double protectedPop(Stack<Double> stack) throws Exception {
         try {
             return stack.pop();
         } catch (Exception e) {
-            throw new Exception("Empty stack");
+            throw new Exception("invalid syntax");
         }
     }
 
     /**
      * калькулятор выполняющий простые арифметические функции
+     *
      * @param input
      * @return
      * @throws Exception
@@ -72,13 +76,13 @@ public class Calculator extends Arithmetics {
                     case "/":
                         x = protectedPop(stack);
                         y = protectedPop(stack);
-                        if (y != 0)
-                            stack.push(div(x, y));
+                        if (y == 0.0) throw new Exception("You can't div on 0");
+                        stack.push(div(x, y));
                         break;
                     case "log":
                         x = protectedPop(stack);
-                        if (x > 0)
-                            stack.push(log(x));
+                        if (x <= 0.0) throw new Exception("x should be > 0");
+                        stack.push(log(x));
                         break;
                     case "pow":
                         x = protectedPop(stack);
@@ -87,8 +91,8 @@ public class Calculator extends Arithmetics {
                         break;
                     case "sqrt":
                         x = protectedPop(stack);
-                        if (x >= 0)
-                            stack.push(sqrt(x));
+                        if (x > 0.0) throw new Exception("x should be <= 0.0");
+                        stack.push(sqrt(x));
                         break;
                     case "sin":
                         x = protectedPop(stack);
@@ -100,11 +104,12 @@ public class Calculator extends Arithmetics {
                         break;
                 }
             }
-
-
         }
-        return stack.pop();
+        double ans = stack.pop();
+        if (stack.isEmpty()) {
+            return ans;
+        } else {
+            throw new Exception("Invalid number of arguments");
+        }
     }
 }
-
-

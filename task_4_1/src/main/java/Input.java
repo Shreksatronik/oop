@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * write for example sin + - 1 2 3 and press enter
+ */
 public class Input extends Calculator{
 
     public void main(String[] args) throws Exception {
