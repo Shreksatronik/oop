@@ -24,7 +24,7 @@ public class JsonBuilder {
         public List<Note> readFromFile() throws IOException {
             try {
                 File file = new File("test.json");
-                if (file.length() == 0) {//спросить
+                if (file.length() == 0) {
                     FileWriter fileWriter = new FileWriter("test.json");
                     fileWriter.write("[]");
                     fileWriter.close();
