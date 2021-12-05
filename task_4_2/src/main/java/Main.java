@@ -30,16 +30,18 @@ public class Main {
     }
 
     public static void add(String[] args) throws IOException {
-        notebook.addNote(args[1], args[2]);
+        if (args[1] != null && args[2] != null) {
+            notebook.addNote(args[1], args[2]);//добавить проверку
+        }
     }
-
     public static void remove(String[] args) throws IOException {
+        if (args[1] != null){
         notebook.removeNote(args[1]);
-    }
+    }}
 
     public static void show(String[] args) throws IOException {
 
-        if (args == null) {
+        if (Arrays.stream(args).count() <= 1) {
             List<Note> notes = notebook.showAllNotes();
             if (notes.size() == 0) {
                 System.out.println("You have no notes added");
@@ -50,7 +52,7 @@ public class Main {
                     System.out.println(i.getNote());
                 }
             }
-        } else if (Arrays.stream(args).count() == 2) {
+        } else if (Arrays.stream(args).count() == 3) {
             try {
                 List<Note> notes = notebook.showNotesPeriod(LocalDateTime.parse(args[1]),
                         LocalDateTime.parse(args[2]));
@@ -80,3 +82,4 @@ public class Main {
         }
     }
 }
+//args.count<=1

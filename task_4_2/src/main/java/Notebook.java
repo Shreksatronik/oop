@@ -8,11 +8,7 @@ import java.util.stream.Collectors;
 public class Notebook {
 
     private final JsonBuilder file = new JsonBuilder();
-    private List<Note> notes;
-
-    public Notebook() {
-        notes = new ArrayList<>();
-    }
+    private List<Note> notes = new ArrayList<Note>();
 
     public List<Note> showAllNotes() throws IOException {
         return file.readFromFile();
@@ -27,15 +23,12 @@ public class Notebook {
     public void addNote(String heading, String text) throws IOException {
         try {
             notes.addAll(file.readFromFile());
-            Note note = new Note();
-            note.setHeading(heading);
-            note.setNote(text);
-            notes.add(note);
+            notes.add(new Note(heading,text));
             file.writeToFile(notes);
         } catch (FileNotFoundException fe) {
             System.out.println("The file wasn't found");
         }
-    }
+    }//ask
 
     /**
      * Removing a notes with such heading

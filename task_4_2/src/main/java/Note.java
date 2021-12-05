@@ -5,12 +5,14 @@ public class Note {
     private String heading;
     private String note;
 
+    Note(String heading, String note) {
+        this.time = LocalDateTime.now();
+        this.heading = heading;
+        this.note = note;
+    }
 
-    /**
-     * @return the date of note's creation
-     */
     public LocalDateTime getTime() {
-        return time.now();
+        return time;
     }
 
     /**
@@ -19,25 +21,11 @@ public class Note {
     public String getHeading() {
         return this.heading;
     }
-    /**
-     * @return set heading
-     */
-    public String setHeading(String title){
-        return this.heading  = title;
-    }
 
     /**
      * @return the note content
      */
     public String getNote() {
         return note;
-    }
-
-    /**
-     * @return set note
-     */
-
-    public String setNote(String note){
-        return this.note = note;
     }
 }
