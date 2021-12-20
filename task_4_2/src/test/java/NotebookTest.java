@@ -69,15 +69,14 @@ public class NotebookTest {
         }
 
         @Test
-        public void findNotesPeriodSubwords() throws IOException {
+        public void findNotesPeriodsubwords() throws IOException {
             List<String> subwords = new ArrayList<>();
-            subwords.add("Header");
-            LocalDateTime timeToTest = LocalDateTime.now();
-            notebook.addNote("Header", "Hello");
+            subwords.add("wow");
+            notebook.addNote("wow", "Hello");
             notebook.addNote("Header", "This is the note");
-            Note note = new Note("Header", "This is the note");
-            Note result = notebook.findNotesPeriodSwords(timeToTest,
-                    LocalDateTime.parse("2022-11-25T18:12:40"), subwords).get(0);
+            Note note = new Note("wow", "Hello");
+            Note result = notebook.findNotesPeriodSwords(LocalDateTime.parse("2021-12-20T16:27:40").withNano(0), LocalDateTime.parse("2022-12-20T16:27:40").withNano(0),
+                    subwords).get(0);
             Assertions.assertEquals(result.getNote(), note.getNote());
         }
         }

@@ -28,7 +28,7 @@ public class Notebook {
         } catch (FileNotFoundException fe) {
             System.out.println("The file wasn't found");
         }
-    }//ask
+    }
 
     /**
      * Removing a notes with such heading
@@ -63,8 +63,8 @@ public class Notebook {
     public List<Note> findNotesPeriodSwords(LocalDateTime from, LocalDateTime to, List<String> subWords) throws IOException {
         notes = file.readFromFile();
         return notes.stream()
-                .filter(i -> i.getTime().isAfter(from))
-                .filter(i -> i.getTime().isBefore(to))
+                .filter(i -> i.getTime().withNano(0).isAfter(from))
+                .filter(i -> i.getTime().withNano(0).isBefore(to))
                 .filter(j -> subWords.stream()
                         .anyMatch(
                                 i -> j.getHeading()

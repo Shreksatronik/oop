@@ -6,7 +6,7 @@ public class Note {
     private String note;
 
     Note(String heading, String note) {
-        this.time = LocalDateTime.now();
+        this.time = LocalDateTime.now().withNano(0);
         this.heading = heading;
         this.note = note;
     }
